@@ -12,7 +12,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Chạy lệnh Maven để build ra file .war, bỏ qua các bài test
-RUN mvn clean package -DskipTests
+RUN mvn clean package -Dmaven.test.skip=true
 
 # ---- Stage 2: Run the application in Tomcat ----
 # Sử dụng image Tomcat 11 chính thức
