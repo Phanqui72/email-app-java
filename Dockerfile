@@ -1,6 +1,6 @@
 # ---- Stage 1: Build the application using Maven ----
 # Sử dụng một image có sẵn Maven và JDK 21 (tương thích với JDK 24 của bạn)
-FROM maven:3.9-eclipse-temurin-24 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 
 # Đặt thư mục làm việc bên trong container
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 
 # ---- Stage 2: Run the application in Tomcat ----
 # Sử dụng image Tomcat 11 chính thức
- FROM tomcat:11.0-jdk24-temurin
+FROM tomcat:11.0-jdk21-temurin
 
 # Xóa các ứng dụng mặc định trong webapps của Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
